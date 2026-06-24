@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPA Разработчик</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* Градиентные слова */
+    .grad1 {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .grad2 {
+      background: linear-gradient(135deg, #f857a6, #ff5858);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .grad3 {
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .grad4 {
+      background: linear-gradient(135deg, #fc5c7d, #6a82fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .grad5 {
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .grad6 {
+      background: linear-gradient(135deg, #e44d26, #f16529);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .grad7 {
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .grad8 {
+      background: linear-gradient(135deg, #00b09b, #96c93d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    /* Шапка */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 30px;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #0072ff;
+    }
+
+    /* Герой */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 90vh;
+      padding: 60px;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero-text p {
+      font-size: 1.15rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .hero-visual {
+      width: 400px;
+      height: 400px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #0072ff, #00c6ff, #38ef7d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.3rem;
+      text-align: center;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,114,255,0.3);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      color: #fff;
+      box-shadow: 0 8px 25px rgba(0,114,255,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(0,114,255,0.4);
+    }
+
+    /* Секции */
+    section {
+      padding: 80px 60px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 50px;
+    }
+
+    /* Что такое RPA */
+    .about {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-text h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      color: #555;
+      font-size: 1.05rem;
+    }
+
+    .about-visual {
+      flex: 1;
+      min-width: 300px;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .about-visual .big-number {
+      font-size: 5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0072ff, #38ef7d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-visual p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    /* Навыки */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .skill-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 35px 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .skill-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .skill-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Инструменты */
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .tool-tag {
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .tool-tag:nth-child(1)  { background: linear-gradient(135deg, #0072ff, #00c6ff); }
+    .tool-tag:nth-child(2)  { background: linear-gradient(135deg, #f857a6, #ff5858); }
+    .tool-tag:nth-child(3)  { background: linear-gradient(135deg, #11998e, #38ef7d); }
+    .tool-tag:nth-child(4)  { background: linear-gradient(135deg, #fc5c7d, #6a82fb); }
+    .tool-tag:nth-child(5)  { background: linear-gradient(135deg, #f7971e, #ffd200); color: #333; }
+    .tool-tag:nth-child(6)  { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
+    .tool-tag:nth-child(7)  { background: linear-gradient(135deg, #e44d26, #f16529); }
+    .tool-tag:nth-child(8)  { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    .tool-tag:nth-child(9)  { background: linear-gradient(135deg, #667eea, #764ba2); }
+    .tool-tag:nth-child(10) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+
+    /* Зарплата */
+    .salary-cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .salary-card {
+      background: #fff;
+      border: 2px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      min-width: 280px;
+      flex: 1;
+      max-width: 350px;
+      transition: transform 0.3s;
+    }
+
+    .salary-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .salary-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .salary-card .price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .salary-card p {
+      color: #777;
+    }
+
+    /* Процесс */
+    .steps {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      counter-reset: step;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 220px;
+      max-width: 280px;
+      text-align: center;
+      padding: 30px 20px;
+      counter-increment: step;
+    }
+
+    .step-num {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .step h4 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Контакт */
+    .contact {
+      text-align: center;
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      color: #fff;
+      border-radius: 30px;
+      margin: 0 60px 80px;
+      padding: 60px 40px;
+    }
+
+    .contact h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    .contact p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .contact .btn {
+      background: #fff;
+      color: #0072ff;
+    }
+
+    .contact .btn:hover {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* Футер */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 15px 25px; }
+      .hero { padding: 40px 25px; min-height: auto; }
+      .hero-text h1 { font-size: 2rem; }
+      .hero-visual { width: 100%; height: 280px; }
+      section { padding: 50px 25px; }
+      .contact { margin: 0 20px 50px; padding: 40px 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><span class="grad1">RPA</span> Dev</div>
+    <nav>
+      <a href="#about">О профессии</a>
+      <a href="#skills">Навыки</a>
+      <a href="#tools">Инструменты</a>
+      <a href="#salary">Зарплата</a>
+      <a href="#contact">Связаться</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Профессия <span class="grad2">RPA</span> Разработчик</h1>
+      <p>Создавайте <span class="grad3">роботов</span>, которые автоматизируют рутинные процессы, экономя время и деньги компаний по всему миру.</p>
+      <a href="#about" class="btn btn-primary">Узнать больше</a>
+    </div>
+    <div class="hero-visual">
+      Автоматизация<br>Будущего<br><span class="grad5">Уже здесь</span>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">Что такое <span class="grad4">RPA</span>?</h2>
+    <p class="section-subtitle">Robotic Process Automation — технология, которая меняет бизнес</p>
+    <div class="about">
+      <div class="about-text">
+        <h3><span class="grad1">RPA-разработчик</span> — это</h3>
+        <p>Специалист, который проектирует, разрабатывает и внедряет <span class="grad3">программных роботов</span> для автоматизации повторяющихся бизнес-процессов. Роботы обрабатывают данные, работают с документами, интегрируют системы и выполняют задачи, которые ранее занимали часы ручного труда.</p>
+      </div>
+      <div class="about-visual">
+        <div class="big-number">40%</div>
+        <p>рабочего времени можно <span class="grad2">автоматизировать</span> с помощью RPA</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Ключевые <span class="grad7">навыки</span></h2>
+    <p class="section-subtitle">Что нужно знать RPA-разработчику</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="icon">⚙️</div>
+        <h4><span class="grad1">Логика и алгоритмы</span></h4>
+        <p>Понимание структур данных, условий, циклов и базовых алгоритмов для построения надёжных процессов.</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🐍</div>
+        <h4><span class="grad3">Программирование</span></h4>
+        <p>Python, C#, VB.NET — языки, на которых пишутся скрипты и расширения для RPA-платформ.</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">📊</div>
+        <h4><span class="grad5">Анализ бизнес-процессов</span></h4>
+        <p>Умение выявлять процессы, пригодные для автоматизации, и проектировать оптимальные решения.</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🔗</div>
+        <h4><span class="grad4">Интеграция систем</span></h4>
+        <p>Работа с API, базами данных, SAP, CRM и другими корпоративными системами.</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🤖</div>
+        <h4><span class="grad2">RPA-платформы</span></h4>
+        <p>UiPath, Blue Prism, Automation Anywhere, Power Automate — глубокое знание хотя бы одной платформы.</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🛡️</div>
+        <h4><span class="grad8">Тестирование и отладка</span></h4>
+        <p>Обеспечение стабильности роботов, обработка ошибок иEDGE-случаев в продакшн-среде.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <h2 class="section-title">Инструменты <span class="grad6">RPA</span></h2>
+    <p class="section-subtitle">Популярные платформы и технологии</p>
+    <div class="tools-list">
+      <span class="tool-tag">UiPath</span>
+      <span class="tool-tag">Blue Prism</span>
+      <span class="tool-tag">Automation Anywhere</span>
+      <span class="tool-tag">Power Automate</span>
+      <span class="tool-tag">Python</span>
+      <span class="tool-tag">Selenium</span>
+      <span class="tool-tag">SAP</span>
+      <span class="tool-tag">REST API</span>
+      <span class="tool-tag">SQL</span>
+      <span class="tool-tag">Docker</span>
+    </div>
+  </section>
+
+  <section id="salary">
+    <h2 class="section-title">Уровень <span class="grad7">зарплаты</span></h2>
+    <p class="section-subtitle">Сколько зарабатывают RPA-разработчики</p>
+    <div class="salary-cards">
+      <div class="salary-card">
+        <h4>Junior</h4>
+        <div class="price"><span class="grad3">80–120K</span></div>
+        <p>руб./мес. в России</p>
+      </div>
+      <div class="salary-card">
+        <h4>Middle</h4>
+        <div class="price"><span class="grad1">150–250K</span></div>
+        <p>руб./мес. в России</p>
+      </div>
+      <div class="salary-card">
+        <h4>Senior</h4>
+        <div class="price"><span class="grad2">300–500K+</span></div>
+        <p>руб./мес. в России</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <h2 class="section-title">Как стать <span class="grad2">RPA-разработчиком</span></h2>
+    <p class="section-subtitle">Пошаговый путь в профессию</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4><span class="grad5">Изучите основы</span></h4>
+        <p>Программирование, логика, базы данных и API.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4><span class="grad1">Освойте платформу</span></h4>
+        <p>Выберите UiPath, Blue Prism или Automation Anywhere и пройдите курсы.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4><span class="grad3">Практикуйтесь</span></h4>
+        <p>Создавайте проекты, автоматизируйте реальные процессы, участвуйте в хакатонах.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4><span class="grad4">Получите сертификат</span></h4>
+        <p>Сертификация UiPath, Blue Prism или Microsoft подтвердит ваши навыки.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h4><span class="grad7">Начните карьеру</span></h4>
+        <p>Устройтесь RPA-разработчиком и расти до архитектора автоматизации.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="contact" id="contact">
+    <h2>Готовы начать карьеру в <span class="grad5">RPA</span>?</h2>
+    <p>Изучите профессию, освойте инструменты и станьте востребованным специалистом автоматизации.</p>
+    <a href="#" class="btn">Начать путь</a>
+  </div>
+
+  <footer>
+    &copy; 2026 RPA Dev. Все права защищены.
+  </footer>
+
+</body>
+</html>
